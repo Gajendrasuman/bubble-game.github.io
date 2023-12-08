@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Game</title>
+    <link rel="stylesheet" href="game.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="container">
+        <div class="game-frame">
+            <div class="top-bar">
+                <div class="player-char">
+                    <i class="bx bxs-user"></i>
+                </div>
+                <div class="player-name">
+                    <h1>Player0</h1>
+                </div>
+                <div class="coins">
+                    <i class="bx bxs-copyright"></i>
+                    <span>0</span>
+                </div>
+                <div class="setting" onclick="settings()">
+                    <i class="bx bxs-cog"></i>
+                </div>
+
+
+            </div>
+            <div class="main-frame">
+                <!-- <div class="flower">
+                    <div class="leaves">
+                        <div class="top-leaf"></div>
+                        <div class="right-leaf"></div>
+                        <div class="bottom-leaf"></div>
+                        <div class="left-leaf"></div>
+                        <div class="char">2</div>
+                    </div>
+                </div> -->
+                <div class="circle " onclick="target(this)">2</div>
+            </div>
+            <div class="score-bar">
+                <div class="score best-score" style="color: #70a8f2;">
+                    <h2>Best Score</h2>
+                    <span>0</span>
+                </div>
+                <div class="score high-score" style="color: #70f279;">
+                    <h2>High Score</h2>
+                    <span>0</span>
+                </div>
+                <div class="score current-score" style="color: #f2c070;">
+                    <h2>Current Score</h2>
+                    <span>0</span>
+                </div>
+                <div class="play-state">
+                    <h3 style="color: #f66565; background: #00f241;" onclick="playState(this)">Play</h3>
+                    <h3 style="color: #f66565; background: #00bef2;" onclick="restart()">Restart</h3>
+                </div>
+
+            </div>
+            <div class="bottom-bar">
+                <div class="col timer">
+                    <h3 style="background: #f00; color: #0f0;">Time Remain</h3>
+                    <span style="background: #f00; color: #0f0;">120</span>
+                </div>
+                <div class=" col letter">
+                    <h3 style="background: #0f0; color: #f00;">Find</h3>
+                    <span style="background: #0f0; color: #f00;">A</span>
+                </div>
+            </div>
+
+            <div class="settings">
+                <div class="settings-box">
+                    <div class="cancel" onclick="cancel()">
+                        <i class="bx bx-x"></i>
+                    </div>
+                    <div class="change-profile-name">
+                        <label for="name">Profile Name</label>
+                        <input type="text" id="name" value="Player0" placeholder="Profile Name">
+                    </div>
+                    <div class="change-profile-icon">
+                        <h3>Choose Profile Icon</h3>
+                        <ul>
+                            <li><i class="bx bx-bot"></i></li>
+                            <li><i class="bx bxs-bot"></i></li>
+                            <li><i class="bx bxs-dog"></i></li>
+                            <li><i class="bx bxs-cat"></i></li>
+                            
+                        </ul>
+                    </div>
+    
+                    <div class="game-mode">
+                        <h1>Game Mode</h1>
+
+                        <h3 style="--background: #0f0;">Easy</h3>
+                        <h3 style="--background: #f2c070;">Medium</h3>
+                        <h3 style="--background: #f00;">Hard</h3>
+                        <h3 style="--background: #ca03ca;">Extreme</h3>
+                    </div>
+    
+                    <div class="color change-profile-background">
+                        <h3>Choose Profile Background</h3>
+                        <input type="color" colorpick-eyedropper-active="false">
+                    </div>
+                    <div class="color change-profile-color">
+                        <h3>Choose Profile Color</h3>
+                        <input type="color" colorpick-eyedropper-active="false">
+                    </div>
+                    <div class="save-btn">
+                        <button type="button" onclick="cancel()">Cancel</button>
+                        <button type="button" onclick="save()">Save</button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./game.js"></script>
+</body>
+</html>
