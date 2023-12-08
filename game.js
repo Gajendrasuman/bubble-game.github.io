@@ -119,6 +119,7 @@ function save(){
                     }
                     fetch(file,{
                         method: "PUT",
+                        headers: {"Content-Type": "Application/json"},
                         body: JSON.stringify(data)
                     })
         }
