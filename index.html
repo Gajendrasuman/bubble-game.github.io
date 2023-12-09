@@ -81,21 +81,33 @@
                     <div class="change-profile-icon">
                         <h3>Choose Profile Icon</h3>
                         <ul>
-                            <li><i class="bx bx-bot"></i></li>
-                            <li><i class="bx bxs-bot"></i></li>
-                            <li><i class="bx bxs-dog"></i></li>
-                            <li><i class="bx bxs-cat"></i></li>
+                            <li onclick="iconSelect(this)"><i class="bx bx-bot"></i></li>
+                            <li onclick="iconSelect(this)"><i class="bx bxs-bot"></i></li>
+                            <li onclick="iconSelect(this)"><i class="bx bxs-dog"></i></li>
+                            <li onclick="iconSelect(this)"><i class="bx bxs-cat"></i></li>
                             
                         </ul>
                     </div>
-    
+                    <div class="change-bubble-shape">
+                        <h3>Change Bubble Shape</h3>
+                        <select>
+                            <option value="circle">Circle</option>
+                            <option value="square">Square</option>
+                            <option value="square-rounded">Rounded Square</option>
+                            <option value="top-left-leaf">Top Left Leaf</option>
+                            <option value="top-right-leaf">Top Right Leaf</option>
+                            <option value="bottom-right-leaf">Bottom Right Leaf</option>
+                            <option value="bottom-left-leaf">Bottom Left Leaf</option>
+                            <option value="flower">Flower</option>
+                        </select>
+                    </div>
                     <div class="game-mode">
                         <h1>Game Mode</h1>
 
-                        <h3 style="--background: #0f0;">Easy</h3>
-                        <h3 style="--background: #f2c070;">Medium</h3>
-                        <h3 style="--background: #f00;">Hard</h3>
-                        <h3 style="--background: #ca03ca;">Extreme</h3>
+                        <h3 onclick="modeSelect(this)" style="--background: #0f0;">Easy</h3>
+                        <h3 onclick="modeSelect(this)" style="--background: #f2c070;">Medium</h3>
+                        <h3 onclick="modeSelect(this)" style="--background: #f00;">Hard</h3>
+                        <h3 onclick="modeSelect(this)" style="--background: #ca03ca;">Extreme</h3>
                     </div>
     
                     <div class="color change-profile-background">
