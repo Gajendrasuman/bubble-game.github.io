@@ -365,6 +365,11 @@
     }
 }
 
+@keyframes fly-up{
+    from{top: 100%;}
+    to{top: -5rem;}
+}
+
 .container .game-frame .main-frame{
     height: calc(100% - 5rem);
     width: calc(100% - clamp(5rem, 15%, 25rem));
@@ -382,8 +387,11 @@
     background: #005a;
     color: #fff;
     position: absolute;
+    cursor: pointer;
     left: 0;
     top: -5rem;
+    animation: fly-up 6s linear;
+    
     /* animation: fly-up 10s linear; */
     &:hover{
         background: #f0f;
@@ -394,6 +402,7 @@
         line-height: 1.5rem;
         font-size: 0.8rem;
         top: -1.5rem;
+        animation: fly-up 3s linear;
     }
     &.hard{
         height: 2.5rem;
@@ -401,6 +410,7 @@
         line-height: 2.5rem;
         font-size: 1.2rem;
         top: -2.5rem;
+        animation: fly-up 4s linear;
     }
     &.medium{
         height: 3.5rem;
@@ -408,6 +418,7 @@
         line-height: 3.5rem;
         font-size: 1.5rem;
         top: -3.5rem;
+        animation: fly-up 5s linear;
     }
 }
 & .square{
@@ -417,8 +428,11 @@
     line-height: 5rem;
     font-size: 1.8rem;
     background: #005a;
+    position: absolute;
     color: #fff;
+    cursor: pointer;
     top: -5rem;
+    animation: fly-up 6s linear;
     &:hover{
         background: #f0f;
     }
@@ -428,6 +442,7 @@
         line-height: 1.5rem;
         font-size: 0.8rem;
         top: -1.5rem;
+        animation: fly-up 3s linear;
     }
     &.hard{
         height: 2.5rem;
@@ -435,6 +450,7 @@
         line-height: 2.5rem;
         font-size: 1.2rem;
         top: -2.5rem;
+        animation: fly-up 4s linear;
     }
     &.medium{
         height: 3.5rem;
@@ -442,6 +458,7 @@
         line-height: 3.5rem;
         font-size: 1.5rem;
         top: -3.5rem;
+        animation: fly-up 5s linear;
     }
 }
 & .square-rounded{
@@ -452,8 +469,11 @@
     font-size: 1.8rem;
     border-radius: 1.5rem;
     background: #005a;
+    position: absolute;
     color: #fff;
     top: -5rem;
+    cursor: pointer;
+    animation: fly-up 6s linear;
     &:hover{
         background: #f0f;
     }
@@ -464,6 +484,7 @@
         font-size: 0.8rem;
         border-radius: 0.3rem;
         top: -1.5rem;
+        animation: fly-up 3s linear;
     }
     &.hard{
         height: 2.5rem;
@@ -472,6 +493,7 @@
         font-size: 1.2rem;
         border-radius: 0.5rem;
         top: -2.5rem;
+        animation: fly-up 4s linear;
     }
     &.medium{
         height: 3.5rem;
@@ -480,18 +502,22 @@
         font-size: 1.5rem;
         border-radius: 1rem;
         top: -3.5rem;
+        animation: fly-up 5s linear;
     }
 }
 & .top-left-leaf{
     height: 5rem;
     width: 5rem;
+    cursor: pointer;
     text-align: center;
     line-height: 5rem;
     font-size: 1.8rem;
     border-radius: 0% 100% 100% 100%;
     background: #005a;
+    position: absolute;
     color: #fff;
     top: -5rem;
+    animation: fly-up 6s linear;
     &:hover{
         background: #f0f;
     }
@@ -501,6 +527,7 @@
         line-height: 1.5rem;
         font-size: 0.8rem;
         top: -1.5rem;
+        animation: fly-up 3s linear;
     }
     &.hard{
         height: 2.5rem;
@@ -508,6 +535,7 @@
         line-height: 2.5rem;
         font-size: 1.2rem;
         top: -2.5rem;
+        animation: fly-up 4s linear;
     }
     &.medium{
         height: 3.5rem;
@@ -515,6 +543,7 @@
         line-height: 3.5rem;
         font-size: 1.5rem;
         top: -3.5rem;
+        animation: fly-up 5s linear;
     }
 }
 & .top-right-leaf{
@@ -522,11 +551,14 @@
     width: 5rem;
     text-align: center;
     line-height: 5rem;
+    position: absolute;
+    cursor: pointer;
     font-size: 1.8rem;
     border-radius: 100% 0% 100% 100%;
     background: #005a;
     color: #fff;
     top: -5rem;
+    animation: fly-up 6s linear;
     &:hover{
         background: #f0f;
     }
@@ -536,6 +568,7 @@
         line-height: 1.5rem;
         font-size: 0.8rem;
         top: -1.5rem;
+        animation: fly-up 3s linear;
     }
     &.hard{
         height: 2.5rem;
@@ -543,6 +576,7 @@
         line-height: 2.5rem;
         font-size: 1.2rem;
         top: -2.5rem;
+        animation: fly-up 4s linear;
     }
     &.medium{
         height: 3.5rem;
@@ -550,6 +584,7 @@
         line-height: 3.5rem;
         font-size: 1.5rem;
         top: -3.5rem;
+        animation: fly-up 5s linear;
     }
 }
 & .bottom-left-leaf{
@@ -558,10 +593,13 @@
     text-align: center;
     line-height: 5rem;
     font-size: 1.8rem;
+    cursor: pointer;
+    position: absolute;
     border-radius: 100% 100% 100% 0%;
     background: #005a;
     color: #fff;
     top: -5rem;
+    animation: fly-up 6s linear;
     &:hover{
         background: #f0f;
     }
@@ -571,6 +609,7 @@
         line-height: 1.5rem;
         font-size: 0.8rem;
         top: -1.5rem;
+        animation: fly-up 3s linear;
     }
     &.hard{
         height: 2.5rem;
@@ -578,6 +617,7 @@
         line-height: 2.5rem;
         font-size: 1.2rem;
         top: -2.5rem;
+        animation: fly-up 4s linear;
     }
     &.medium{
         height: 3.5rem;
@@ -585,6 +625,7 @@
         line-height: 3.5rem;
         font-size: 1.5rem;
         top: -3.5rem;
+        animation: fly-up 5s linear;
     }
 }
 & .bottom-right-leaf{
@@ -592,11 +633,14 @@
     width: 5rem;
     text-align: center;
     line-height: 5rem;
+    cursor: pointer;
+    position: absolute;
     font-size: 1.8rem;
     border-radius: 100% 100% 0% 100%;
     background: #005a;
     color: #fff;
     top: -5rem;
+    animation: fly-up 6s linear;
     &:hover{
         background: #f0f;
     }
@@ -606,6 +650,7 @@
         line-height: 1.5rem;
         font-size: 0.8rem;
         top: -1.5rem;
+        animation: fly-up 3s linear;
     }
     &.hard{
         height: 2.5rem;
@@ -613,6 +658,7 @@
         line-height: 2.5rem;
         font-size: 1.2rem;
         top: -2.5rem;
+        animation: fly-up 4s linear;
     }
     &.medium{
         height: 3.5rem;
@@ -620,104 +666,101 @@
         line-height: 3.5rem;
         font-size: 1.5rem;
         top: -3.5rem;
+        animation: fly-up 5s linear;
     }
 }
-
-& .flower{
-    
-    & .leaves{
-        height: 5rem;
-        width: 5rem;
-        top: -5rem;
-        position: relative;
-        &:hover .top-leaf,
-        &:hover .right-leaf,
-        &:hover .left-leaf,
-        &:hover .bottom-leaf{
-            background: #f0f;
-            cursor: pointer;
-        }
+.flower{
+    height: 5rem;
+    width: 5rem;
+    top: -5rem;
+    position: relative;
+    animation: fly-up 6s linear;
+    cursor: pointer;
+    &:hover .top-leaf,
+    &:hover .right-leaf,
+    &:hover .left-leaf,
+    &:hover .bottom-leaf{
+        background: #f0f;
+        cursor: pointer;
+    }
+    & .char{
+        position: absolute;
+        color: #fff;
+        top: calc(50% - 1rem);
+        left: calc(50% - 0.5rem);
+        font-size: 1.8rem;
+    }
+    & .top-leaf{
+        top: 0;
+        left: 0;
+        height: 50%;
+        width: 50%;
+        border-radius: 100% 100% 0% 100%;
+        background: #005;
+        color: #fff;
+        position: absolute;
+    }
+    & .right-leaf{
+        top: 0;
+        right: 0;
+        height: 50%;
+        width: 50%;
+        border-radius: 100% 100% 100% 0%;
+        background: #005;
+        color: #fff;
+        position: absolute;
+    }
+    & .bottom-leaf{
+        bottom: 0;
+        left: 0;
+        height: 50%;
+        width: 50%;
+        border-radius: 100% 0% 100% 100%;
+        background: #005;
+        color: #fff;
+        position: absolute;
+    }
+    & .left-leaf{
+        bottom: 0;
+        right: 0;
+        height: 50%;
+        width: 50%;
+        border-radius: 0% 100% 100% 100%;
+        background: #005;
+        color: #fff;
+        position: absolute;
+    }
+    &.extreme{
+        height: 1.5rem;
+        width: 1.5rem;
+        top: -1.5rem;
+        animation: fly-up 3s linear;
         & .char{
-            position: absolute;
-            color: #fff;
-            top: calc(50% - 1rem);
-            left: calc(50% - 0.5rem);
-            font-size: 1.8rem;
-        }
-        & .top-leaf{
-            top: 0;
-            left: 0;
-            height: 50%;
-            width: 50%;
-            border-radius: 100% 100% 0% 100%;
-            background: #005;
-            color: #fff;
-            position: absolute;
-        }
-        & .right-leaf{
-            top: 0;
-            right: 0;
-            height: 50%;
-            width: 50%;
-            border-radius: 100% 100% 100% 0%;
-            background: #005;
-            color: #fff;
-            position: absolute;
-        }
-        & .bottom-leaf{
-            bottom: 0;
-            left: 0;
-            height: 50%;
-            width: 50%;
-            border-radius: 100% 0% 100% 100%;
-            background: #005;
-            color: #fff;
-            position: absolute;
-        }
-        & .left-leaf{
-            bottom: 0;
-            right: 0;
-            height: 50%;
-            width: 50%;
-            border-radius: 0% 100% 100% 100%;
-            background: #005;
-            color: #fff;
-            position: absolute;
-        }
-        &.extreme{
-            height: 1.5rem;
-            width: 1.5rem;
-            top: -1.5rem;
-            & .char{
-                font-size: 0.8rem;
-                top: calc(50% - 0.5rem);
-                left: calc(50% - 0.18rem);
-            }
-        }
-        &.hard{
-            height: 2.5rem;
-            width: 2.5rem;
-            top: -2.5rem;
-            & .char{
-                font-size: 1.2rem;
-                top: calc(50% - 0.7rem);
-                left: calc(50% - 0.25rem);
-            }
-        }
-        &.medium{
-            height: 3.5rem;
-            width: 3.5rem;
-            top: -3.5rem;
-            & .char{
-                font-size: 1.5rem;
-                top: calc(50% - 0.8rem);
-                left: calc(50% - 0.3rem);
-            }
+            font-size: 0.8rem;
+            top: calc(50% - 0.5rem);
+            left: calc(50% - 0.18rem);
         }
     }
-}
-
-@keyframes fly-up{
-    from{top: 100%;}
-    to{top: 0%;}
+    &.hard{
+        height: 2.5rem;
+        width: 2.5rem;
+        top: -2.5rem;
+        animation: fly-up 4s linear;
+        & .char{
+            font-size: 1.2rem;
+            top: calc(50% - 0.7rem);
+            left: calc(50% - 0.25rem);
+        }
+    }
+    &.medium{
+        height: 3.5rem;
+        width: 3.5rem;
+        top: -3.5rem;
+        animation: fly-up 5s linear;
+        & .char{
+            font-size: 1.5rem;
+            top: calc(50% - 0.8rem);
+            left: calc(50% - 0.3rem);
+        }
+    }
 }
