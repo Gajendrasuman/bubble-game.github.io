@@ -14,9 +14,11 @@ const profileBackground = document.querySelector('.container .game-frame .settin
 const profileColor = document.querySelector('.container .game-frame .settings .change-profile-color input')
 const bubble = document.querySelector('.container .game-frame .settings .change-bubble-shape select')
 const mainFrame = document.querySelector('.container .game-frame .main-frame')
+const gameOver = document.querySelector('.container .game-frame .main-frame .game-over')
 const findChar = document.querySelector('.container .game-frame .bottom-bar .letter span')
 let start;
-// charList = [];
+let game;
+
 function loadData(){
     player.innerText = dt.player;
     settings_player.value = dt.player
@@ -104,10 +106,11 @@ function settings(){
         clearInterval(start)
 }
 function restart(){
-    charList = []
-    document.querySelector('.container .game-frame .main-frame').innerHTML = ""
+    document.querySelector('.container .game-frame .main-frame').innerHTML = "<div class='game-over'><h1>Game Over</h1></div>"
     clearInterval(start);
     currentScore.innerText = 0
+    clearInterval(game)
+    timer.innerText = dt.timer
     document.querySelector('.container .game-frame .score-bar .play-state h3').innerText = "Play"
 }
 
@@ -123,11 +126,23 @@ function save(){
             dt.setItem("mode", mode.innerText.toLowerCase())
         }
     })
+    highScore.innerText = 0
     dt.setItem("bubble", bubble.value)
     dt.setItem("background", profileBackground.value)
     dt.setItem("color", profileColor.value)
     restart()
     cancel()
+}
+
+function gameover(){
+    clearInterval(game)
+    document.querySelector('.container .game-frame .main-frame').innerHTML = "<div class='game-over'><h1>Game Over</h1></div>"
+    clearInterval(start);
+    timer.innerText = dt.timer
+    const gameOver = document.querySelector('.container .game-frame .main-frame .game-over')
+    document.querySelector('.container .game-frame .score-bar .play-state h3').innerText = "Play"
+    gameOver.setAttribute('style', 'z-index: 5;')
+    document.querySelector('.container .game-frame .main-frame .game-over h1').innerText = "Game Over"
 }
 
 function target(n){
@@ -201,6 +216,10 @@ function target(n){
     }
     else{
         n.style.backgroundColor = "#ff0000"
+        currentScore.innerText = parseInt(currentScore.innerText) - 5
+        if(parseInt(currentScore.innerText) < 0){
+            currentScore.innerText = 0
+        }
     }
 }
 
@@ -248,6 +267,10 @@ function removeBubble(){
                 }
             }
     })
+    if(parseInt(currentScore) % 100 == 0){
+        dt.setItem('coins', parseInt(dt.coins) + 10)
+        coins.innerText = dt.coins
+    }
 }
 
 function generateChar(){
@@ -370,19 +393,23 @@ function generateChar(){
 function createBubble(){
     removeBubble()
     const bubbles = document.querySelectorAll('.container .game-frame .main-frame .'+dt.bubble)
+    if(dt.mode == "random"){
+        const bubbles = document.querySelectorAll('.container .game-frame .main-frame .'+dt.mode)
+    }
     if(bubbles.length < 10 && dt.mode.toLowerCase() == "easy"){
         if(dt.bubble == "flower"){
             let chr = generateChar()
             posX = Math.floor(Math.random() * 100)
             bub = document.createElement('div')
-            bub.appendChild(document.createElement('div').setAttribute('class', 'top-left-leaf'))
-            bub.appendChild(document.createElement('div').setAttribute('class', 'top-right-leaf'))
-            bub.appendChild(document.createElement('div').setAttribute('class', 'bottom-left-leaf'))
-            bub.appendChild(document.createElement('div').setAttribute('class', 'bottom-right-leaf'))
-            bub.appendChild(document.createElement('div').setAttribute('class', 'char')).innerText = chr
+            bub.appendChild(document.createElement('div')).setAttribute('class', 'top-left-leaf')
+            bub.appendChild(document.createElement('div')).setAttribute('class', 'top-right-leaf')
+            bub.appendChild(document.createElement('div')).setAttribute('class', 'bottom-left-leaf')
+            bub.appendChild(document.createElement('div')).setAttribute('class', 'bottom-right-leaf')
+            let c = bub.appendChild(document.createElement('div')).setAttribute('class', 'char')
             bub.setAttribute('class', dt.bubble+" "+dt.mode.toLowerCase())
             bub.setAttribute('onclick', 'target(this)')
             mainFrame.appendChild(bub)
+            c.innerText = chr
             if(posX > 90){
                 bub.style = "left: calc("+posX+"% - "+bub.clientWidth / 2+"px; transition:none;"
             }
@@ -391,6 +418,7 @@ function createBubble(){
             }
         }
         else{
+
             let chr = generateChar()
             posX = Math.floor(Math.random() * 100)
             bub = document.createElement('div')
@@ -520,30 +548,29 @@ function createBubble(){
 
 function playState(n){
     if(n.innerText == "Play"){
-        if(dt.mode.toLowerCase() == "easy"){
-            start = setInterval(() => {
-                createBubble()
-            }, 1000);
-        }
-        else if(dt.mode.toLowerCase() == "medium"){
-            start = setInterval(() => {
-                createBubble()
-            }, 900);
-        }
-        else if(dt.mode.toLowerCase() == "hard"){
-            start = setInterval(() => {
-                createBubble()
-            }, 800);
-        }
-        else if(dt.mode.toLowerCase() == "extreme"){
-            start = setInterval(() => {
-                createBubble()
-            }, 700);
-        }
+        game = setInterval(()=>{
+            if(parseInt(timer.innerText) != 0){
+                const gameOver = document.querySelector('.container .game-frame .main-frame .game-over')
+                gameOver.setAttribute('style', "z-index: -1;")
+                document.querySelector('.container .game-frame .main-frame .game-over h1').innerText = "Game Over"
+                timer.innerText = parseInt(timer.innerText) - 1
+            }
+            else{
+                gameover()
+            }
+            
+        }, 1000)
+        start = setInterval(() => {
+            createBubble()
+        }, 1000);
         n.innerText = "Pause"
     }
     else if(n.innerText == "Pause"){
         const bubbles = document.querySelectorAll('.container .game-frame .main-frame .'+dt.bubble)
+        clearInterval(game)
+        const gameOver = document.querySelector('.container .game-frame .main-frame .game-over')
+        gameOver.setAttribute('style', "z-index: 5;")
+        document.querySelector('.container .game-frame .main-frame .game-over h1').innerText = "Paused"
         bubbles.forEach(bubble=>{
             bubble.style.animationPlayState = "paused" 
         })
@@ -551,30 +578,25 @@ function playState(n){
         clearInterval(start)
     }
     else if(n.innerText == "Resume"){
+        game = setInterval(()=>{
+            if(parseInt(timer.innerText) != 0){
+                const gameOver = document.querySelector('.container .game-frame .main-frame .game-over')
+                gameOver.setAttribute('style', "z-index: -1;")
+                timer.innerText = parseInt(timer.innerText) - 1
+                document.querySelector('.container .game-frame .main-frame .game-over h1').innerText = "Game Over"
+            }
+            else{
+                gameover()
+            }
+            
+        }, 1000)
         const bubbles = document.querySelectorAll('.container .game-frame .main-frame .'+dt.bubble)
         bubbles.forEach(bubble=>{
             bubble.style.animationPlayState = "running"
         })
-        if(dt.mode.toLowerCase() == "easy"){
-            start = setInterval(() => {
-                createBubble()
-            }, 1000);
-        }
-        else if(dt.mode.toLowerCase() == "medium"){
-            start = setInterval(() => {
-                createBubble()
-            }, 900);
-        }
-        else if(dt.mode.toLowerCase() == "hard"){
-            start = setInterval(() => {
-                createBubble()
-            }, 800);
-        }
-        else if(dt.mode.toLowerCase() == "extreme"){
-            start = setInterval(() => {
-                createBubble()
-            }, 700);
-        }
+        start = setInterval(() => {
+            createBubble()
+        }, 1000);
         n.innerText = "Pause"
     }
 
